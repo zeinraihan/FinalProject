@@ -14,8 +14,8 @@
               <td>$alat->idbarang</td>
               <td>$alat->namabarang</td>
               <td>$alat->jumlah</td>
-              <td>" . anchor('barang/edit/' . $alat->idbarang, 'Edit') . "
-                  " . anchor('barang/delete/' . $alat->idbarang, 'Delete') . "</td>
+              <td>" . anchor('alat/edit/' . $alat->idbarang, 'Edit') . "
+                  " . anchor('alat/delete/' . $alat->idbarang, 'Delete') . "</td>
               </tr>";
     }
     ?>

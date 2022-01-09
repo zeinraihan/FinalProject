@@ -14,14 +14,14 @@ class Alat extends CI_Controller
         $this->load->helper('url');
     }
 
-    // menampilkan data kontak
+    // menampilkan data alat
     function index()
     {
         $data['dataalat'] = json_decode($this->curl->simple_get($this->API . '/apialat'));
         $this->load->view('alat/list', $data);
     }
 
-    // insert data kontak
+    // insert data alat
     function create()
     {
         if (isset($_POST['submit'])) {
@@ -42,42 +42,42 @@ class Alat extends CI_Controller
         }
     }
 
-    // edit data kontak
+    // edit data alat
     function edit()
     {
         if (isset($_POST['submit'])) {
             $data = array(
-                'id'       =>  $this->input->post('id'),
-                'nama'      =>  $this->input->post('nama'),
-                'nomor' =>  $this->input->post('nomor')
+                'idbarang'       =>  $this->input->post('idbarang'),
+                'namabarang'      =>  $this->input->post('namabarang'),
+                'jumlah' =>  $this->input->post('jumlah')
             );
-            $update =  $this->curl->simple_put($this->API . '/kontak', $data, array(CURLOPT_BUFFERSIZE => 10));
+            $update =  $this->curl->simple_put($this->API . '/apialat', $data, array(CURLOPT_BUFFERSIZE => 10));
             if ($update) {
-                $this->session->set_flashdata('hasil', 'Update Data Berhasil');
+                $this->session->set_flashdata('hasil', 'Update Data alat Berhasil');
             } else {
-                $this->session->set_flashdata('hasil', 'Update Data Gagal');
+                $this->session->set_flashdata('hasil', 'Update Data alat Gagal');
             }
-            redirect('kontak');
+            redirect('alat');
         } else {
-            $params = array('id' =>  $this->uri->segment(3));
-            $data['datakontak'] = json_decode($this->curl->simple_get($this->API . '/kontak', $params));
-            $this->load->view('kontak/edit', $data);
+            $params = array('idbarang' =>  $this->uri->segment(3));
+            $data['dataalat'] = json_decode($this->curl->simple_get($this->API . '/apialat', $params));
+            $this->load->view('alat/edit', $data);
         }
     }
 
-    // delete data kontak
+    // delete data alat
     function delete($id)
     {
         if (empty($id)) {
-            redirect('kontak');
+            redirect('alat');
         } else {
-            $delete =  $this->curl->simple_delete($this->API . '/kontak', array('id' => $id), array(CURLOPT_BUFFERSIZE => 10));
+            $delete =  $this->curl->simple_delete($this->API . '/apialat', array('idbarang' => $id), array(CURLOPT_BUFFERSIZE => 10));
             if ($delete) {
-                $this->session->set_flashdata('hasil', 'Delete Data Berhasil');
+                $this->session->set_flashdata('hasil', 'Delete Data alat Berhasil');
             } else {
-                $this->session->set_flashdata('hasil', 'Delete Data Gagal');
+                $this->session->set_flashdata('hasil', 'Delete Data alat Gagal');
             }
-            redirect('kontak');
+            redirect('alat');
         }
     }
 }
