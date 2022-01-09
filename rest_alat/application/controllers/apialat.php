@@ -6,7 +6,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 require('application/libraries/REST_Controller.php');
 //use Restserver\Libraries\REST_Controller;
 
-class Kontak extends REST_Controller
+class Apialat extends REST_Controller
 {
 
     function __construct($config = 'rest')
@@ -18,13 +18,13 @@ class Kontak extends REST_Controller
     //Menampilkan data kontak
     function index_get()
     {
-        $id = $this->get('id');
+        $id = $this->get('idbarang');
         if ($id == '') {
-            $kontak = $this->db->query('select * from telepon')->result();
+            $alat = $this->db->query('select * from alat')->result();
         } else {
-            $kontak = $this->db->query('select * from telepon where id=' . $id)->result();
+            $alat = $this->db->query('select * from alat where idbarang=' . $id)->result();
         }
-        $this->response($kontak, 200);
+        $this->response($alat, 200);
         //$this->response(array("result"=>$kontak, 200));
 
     }
@@ -32,15 +32,15 @@ class Kontak extends REST_Controller
     //Mengirim atau menambah data kontak baru
     function index_post()
     {
-        $id = $this->post('id');
-        $nama = $this->post('nama');
-        $nomor = $this->post('nomor');
+        $id = $this->post('idbarang');
+        $nama = $this->post('namabarang');
+        $jumlah = $this->post('jumlah');
 
 
-        $kontak = $this->db->query(" insert into telepon (nama,nomor) values ('" . $nama . "','" . $nomor . "') ");
+        $alat = $this->db->query(" insert into alat (idbarang,namabarang,jumlah) values ('" . $id . "','" . $nama . "','" . $jumlah . "') ");
 
-        if ($kontak) {
-            $this->response(array("result" => $kontak, 200));
+        if ($alat) {
+            $this->response(array("result" => $alat, 200));
         } else {
             $this->response(array('status' => 'fail', 502));
         }
