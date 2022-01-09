@@ -49,15 +49,15 @@ class Apialat extends REST_Controller
     //Memperbarui data kontak yang telah ada
     function index_put()
     {
-        $id = $this->put('id');
-        $nama = $this->put('nama');
-        $nomor = $this->put('nomor');
+        $id = $this->put('idbarang');
+        $nama = $this->put('namabarang');
+        $jumlah = $this->put('jumlah');
 
 
-        $kontak = $this->db->query("update telepon set nama='" . $nama . "',nomor='" . $nomor . "' where id=" . $id);
+        $alat = $this->db->query("update alat set namabarang='" . $nama . "',jumlah='" . $jumlah . "' where idbarang=" . $id);
 
-        if ($kontak) {
-            $this->response(array("result" => $kontak, 200));
+        if ($alat) {
+            $this->response(array("result" => $alat, 200));
         } else {
             $this->response(array('status' => 'fail', 502));
         }
@@ -66,8 +66,8 @@ class Apialat extends REST_Controller
     //Menghapus salah satu data kontak
     function index_delete()
     {
-        $id = $this->delete('id');
-        $delete = $this->db->query('delete from telepon where id=' . $id);
+        $id = $this->delete('idbarang');
+        $delete = $this->db->query('delete from alat where idbarang=' . $id);
         if ($delete) {
             $this->response(array('status' => 'success'), 200);
         } else {
