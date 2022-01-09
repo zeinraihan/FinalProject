@@ -47,28 +47,31 @@ class Apipeminjaman extends REST_Controller
         }
     }
 
-    //Memperbarui data kontak yang telah ada
+    //Memperbarui data peminjaman yang telah ada
     function index_put()
     {
-        $id = $this->put('id');
-        $nama = $this->put('nama');
-        $nomor = $this->put('nomor');
+        $id = $this->put('idpeminjaman');
+        $nama = $this->put('namapeminjam');
+        $barang = $this->put('namabarang');
+        $unit = $this->put('unit');
+        $jumlah = $this->put('jumlah');
 
 
-        $kontak = $this->db->query("update telepon set nama='" . $nama . "',nomor='" . $nomor . "' where id=" . $id);
 
-        if ($kontak) {
-            $this->response(array("result" => $kontak, 200));
+        $peminjaman = $this->db->query("update peminjaman set namapeminjam='" . $nama . "',namabarang='" . $barang . "',unit='" . $unit . "',jumlah='" . $jumlah . "' where idpeminjaman=" . $id);
+
+        if ($peminjaman) {
+            $this->response(array("result" => $peminjaman, 200));
         } else {
             $this->response(array('status' => 'fail', 502));
         }
     }
 
-    //Menghapus salah satu data kontak
+    //Menghapus salah satu data peminjaman
     function index_delete()
     {
-        $id = $this->delete('id');
-        $delete = $this->db->query('delete from telepon where id=' . $id);
+        $id = $this->delete('idpeminjaman');
+        $delete = $this->db->query('delete from peminjaman where idpeminjaman=' . $id);
         if ($delete) {
             $this->response(array('status' => 'success'), 200);
         } else {
