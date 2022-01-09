@@ -6,7 +6,7 @@
         <th>IDPEMINJAMAN</th>
         <th>NAMAPEMINJAM</th>
         <th>NAMABARANG</th>
-        <th>UNIT</th>
+        <th>IDUNIT</th>
         <th>JUMLAH</th>
         <th>ACTION</th>
         
@@ -17,7 +17,7 @@
             <td>$data->idpeminjaman</td>
               <td>$data->namapeminjam</td>
               <td>$data->namabarang</td>
-              <td>$data->unit</td>
+              <td>$data->idunit</td>
               <td>$data->jumlah</td>
               <td>" . anchor('alat/edit/' . $data->idpeminjaman, 'Edit') . "
                   " . anchor('alat/delete/' . $data->idpeminjaman, 'Delete') . "</td>

@@ -7,7 +7,7 @@ class Peminjaman extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->API = "http://localhost/finalproject/rest_peminjaman/index.php";
+        $this->API = "http://192.168.1.1/finalproject/rest_peminjaman/index.php";
         $this->load->library('session');
         $this->load->library('curl');
         $this->load->helper('form');
@@ -29,7 +29,7 @@ class Peminjaman extends CI_Controller
                 'idpeminjaman' => $this->input->post('idpeminjaman'),
                 'namapeminjam' => $this->input->post('namapeminjam'),
                 'namabarang' => $this->input->post('namabarang'),
-                'unit' => $this->input->post('unit'),
+                'idunit' => $this->input->post('idunit'),
                 'jumlah' => $this->input->post('jumlah')
             );
             $insert =  $this->curl->simple_post($this->API . '/apipeminjaman', $data, array(CURLOPT_BUFFERSIZE => 10));

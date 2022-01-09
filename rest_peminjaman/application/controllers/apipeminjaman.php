@@ -35,10 +35,10 @@ class Apipeminjaman extends REST_Controller
         $id = $this->post('idpeminjaman');
         $nama = $this->post('namapeminjam');
         $barang = $this->post('namabarang');
-        $unit = $this->post('unit');
+        $unit = $this->post('idunit');
         $jumlah = $this->post('jumlah');
 
-        $peminjaman = $this->db->query(" insert into peminjaman (idpeminjaman,namapeminjam,namabarang,unit,jumlah) values ('" . $id . "','" . $nama . "','" . $barang . "','" . $unit . "','" . $jumlah . "') ");
+        $peminjaman = $this->db->query(" insert into peminjaman (idpeminjaman,namapeminjam,namabarang,idunit,jumlah) values ('" . $id . "','" . $nama . "','" . $barang . "','" . $unit . "','" . $jumlah . "') ");
 
         if ($peminjaman) {
             $this->response(array("result" => $peminjaman, 200));
@@ -53,12 +53,12 @@ class Apipeminjaman extends REST_Controller
         $id = $this->put('idpeminjaman');
         $nama = $this->put('namapeminjam');
         $barang = $this->put('namabarang');
-        $unit = $this->put('unit');
+        $unit = $this->put('idunit');
         $jumlah = $this->put('jumlah');
 
 
 
-        $peminjaman = $this->db->query("update peminjaman set namapeminjam='" . $nama . "',namabarang='" . $barang . "',unit='" . $unit . "',jumlah='" . $jumlah . "' where idpeminjaman=" . $id);
+        $peminjaman = $this->db->query("update peminjaman set namapeminjam='" . $nama . "',namabarang='" . $barang . "',idunit='" . $unit . "',jumlah='" . $jumlah . "' where idpeminjaman=" . $id);
 
         if ($peminjaman) {
             $this->response(array("result" => $peminjaman, 200));
