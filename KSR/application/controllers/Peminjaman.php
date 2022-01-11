@@ -7,7 +7,7 @@ class Peminjaman extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->API = "http://192.168.1.1/finalproject/rest_peminjaman/index.php";
+        $this->API = "http://localhost/finalproject/rest_peminjaman/index.php";
         $this->load->library('session');
         $this->load->library('curl');
         $this->load->helper('form');
@@ -20,8 +20,6 @@ class Peminjaman extends CI_Controller
         $data['datapeminjaman'] = json_decode($this->curl->simple_get($this->API . '/apipeminjaman'));
         $this->load->view('peminjaman/list', $data);
     }
-
-    // insert data alat
     function create()
     {
         if (isset($_POST['submit'])) {
@@ -49,9 +47,13 @@ class Peminjaman extends CI_Controller
     {
         if (isset($_POST['submit'])) {
             $data = array(
-                'idbarang'       =>  $this->input->post('idbarang'),
-                'namabarang'      =>  $this->input->post('namabarang'),
-                'jumlah' =>  $this->input->post('jumlah')
+                'idpeminjaman' => $this->input->post('idpeminjaman'),
+                'namapeminjam' => $this->input->post('namapeminjam'),
+                'namabarang' => $this->input->post('namabarang'),
+                'idunit' => $this->input->post('idunit'),
+                'jumlah' => $this->input->post('jumlah')
+            );
+            $insert =  $this->curl->simple_post($this->API
             );
             $update =  $this->curl->simple_put($this->API . '/apipeminjaman', $data, array(CURLOPT_BUFFERSIZE => 10));
             if ($update) {
@@ -59,9 +61,9 @@ class Peminjaman extends CI_Controller
             } else {
                 $this->session->set_flashdata('hasil', 'Update Data alat Gagal');
             }
-            redirect('alat');
+            redirect('peminjaman');
         } else {
-            $params = array('idbarang' =>  $this->uri->segment(3));
+            $params = array('idpeminjaman' =>  $this->uri->segment(3));
             $data['dataalat'] = json_decode($this->curl->simple_get($this->API . '/apipeminjaman', $params));
             $this->load->view('peminjaman/edit', $data);
         }
@@ -71,15 +73,15 @@ class Peminjaman extends CI_Controller
     function delete($id)
     {
         if (empty($id)) {
-            redirect('alat');
+            redirect('Peminjaman');
         } else {
-            $delete =  $this->curl->simple_delete($this->API . '/apipeminjaman', array('idbarang' => $id), array(CURLOPT_BUFFERSIZE => 10));
+            $delete =  $this->curl->simple_delete($this->API . '/apipeminjaman', array('idpeminjaman' => $id), array(CURLOPT_BUFFERSIZE => 10));
             if ($delete) {
                 $this->session->set_flashdata('hasil', 'Delete Data alat Berhasil');
             } else {
                 $this->session->set_flashdata('hasil', 'Delete Data alat Gagal');
             }
-            redirect('alat');
+            redirect('Peminjaman');
         }
     }
 }

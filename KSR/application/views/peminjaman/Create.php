@@ -1,12 +1,22 @@
-<?php echo form_open_multipart('alat/create'); ?>
+<a href="http://localhost/FinalProject/KSR/index.php/alat/">alat</a>
+    <a href="http://localhost/FinalProject/KSR/index.php/peminjaman/">peminjam</a>
+<?php echo form_open_multipart('peminjaman/create'); ?>
 <table>
     <tr>
         <td>ID</td>
-        <td><?php echo form_input('idbarang'); ?></td>
+        <td><?php echo form_input('idpeminjaman'); ?></td>
     </tr>
     <tr>
-        <td>NAMA</td>
+        <td>NAMA PEMINJAM</td>
+        <td><?php echo form_input('namapeminjam'); ?></td>
+        </tr>
+    <tr>
+        <td>NAMA BARANG</td>
         <td><?php echo form_input('namabarang'); ?></td>
+        </tr>
+    <tr>
+        <td>ID UNIT</td>
+        <td><?php echo form_input('idunit'); ?></td>
     </tr>
     <tr>
         <td>JUMLAH</td>

@@ -1,3 +1,5 @@
+<a href="http://localhost/FinalProject/KSR/index.php/alat/">alat</a>
+    <a href="http://localhost/FinalProject/KSR/index.php/peminjaman/">peminjam</a>
 <font color="orange">
     <?php echo $this->session->flashdata('hasil'); ?>
 </font>

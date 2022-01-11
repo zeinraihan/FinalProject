@@ -1,23 +1,31 @@
-<?php echo form_open('alat/edit'); ?>
-<?php echo form_hidden('idbarang', $dataalat[0]->idbarang); ?>
+<?php echo form_open('peminjaman/edit'); ?>
+<?php echo form_hidden('idpeminjaman', $dataalat[0]->idpeminjaman); ?>
 
 <table>
     <tr>
-        <td>ID</td>
-        <td><?php echo form_input('', $dataalat[0]->idbarang, "disabled"); ?></td>
+        <td>IDPEMINJAM</td>
+        <td><?php echo form_input('idbarang', $dataalat[0]->idpeminjaman, "disabled"); ?></td>
     </tr>
     <tr>
-        <td>NAMA</td>
-        <td><?php echo form_input('nama', $dataalat[0]->namabarang); ?></td>
+        <td>NAMAPEMINJAMAN</td>
+        <td><?php echo form_input('namapeminjam', $dataalat[0]->namapeminjam); ?></td>
+    </tr>
+    <tr>
+        <td>NAMABARANG</td>
+        <td><?php echo form_input('namabarang', $dataalat[0]->namabarang); ?></td>
+    </tr>
+    <tr>
+        <td>IDUNIT</td>
+        <td><?php echo form_input('idunit', $dataalat[0]->idunit); ?></td>
     </tr>
     <tr>
         <td>JUMLAH</td>
-        <td><?php echo form_input('nomor', $dataalat[0]->jumlah); ?></td>
+        <td><?php echo form_input('jumlah', $dataalat[0]->jumlah); ?></td>
     </tr>
     <tr>
         <td colspan="2">
             <?php echo form_submit('submit', 'Simpan'); ?>
-            <?php echo anchor('alat', 'Kembali'); ?></td>
+            <?php echo anchor('peminjaman', 'Kembali'); ?></td>
     </tr>
 </table>
 <?php

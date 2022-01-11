@@ -1,3 +1,5 @@
+<a href="http://localhost/FinalProject/KSR/index.php/alat/">alat</a>
+    <a href="http://localhost/FinalProject/KSR/index.php/peminjaman/">peminjam</a>
 <font color="orange">
     <?php echo $this->session->flashdata('hasil'); ?>
 </font>
@@ -19,8 +21,8 @@
               <td>$data->namabarang</td>
               <td>$data->idunit</td>
               <td>$data->jumlah</td>
-              <td>" . anchor('alat/edit/' . $data->idpeminjaman, 'Edit') . "
-                  " . anchor('alat/delete/' . $data->idpeminjaman, 'Delete') . "</td>
+              <td>" . anchor('peminjaman/edit/' . $data->idpeminjaman, 'Edit') . "
+                  " . anchor('peminjaman/delete/' . $data->idpeminjaman, 'Delete') . "</td>
               </tr>";
     }
     ?>

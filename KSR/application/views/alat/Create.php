@@ -1,3 +1,5 @@
+<a href="http://localhost/FinalProject/KSR/index.php/alat/">alat</a>
+    <a href="http://localhost/FinalProject/KSR/index.php/peminjaman/">peminjam</a>
 <?php echo form_open_multipart('alat/create'); ?>
 <table>
     <tr>
